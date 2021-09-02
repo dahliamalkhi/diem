@@ -1013,7 +1013,7 @@ jobs:
           if ${{ needs.need-base-images.result!='success' }}; then
             cmd="./scripts/fgi/run --tag ${{ needs.build-images.outputs.head-tag }} --suite land_blocking"
           else
-            cmd="./scripts/fgi/run --tag ${{ needs.build-images.outputs.head-tag }} --base-image-tag ${{ needs.need-base-images.outputs.prev-tag }} --suite land_blocking_compat"
+            cmd="./scripts/fgi/run -E SLACK_URL=https://hooks.slack.com/services/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 --tag ${{ needs.build-images.outputs.head-tag }} --base-image-tag ${{ needs.need-base-images.outputs.prev-tag }} --suite land_blocking_compat"
           fi
           eval $cmd
           ret=$?
