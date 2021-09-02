@@ -214,6 +214,7 @@ pub fn run_forge<F: Factory>(tests: ForgeConfig<'_>, factory: F, options: &Optio
                 .ok();
             if let Some(ref slack_url) = slack_url {
                 let slack_client = SlackClient::new();
+                print!("slack_url = {:?}", slack_url);
                 if let Err(e) = slack_client.send_message(slack_url, &report.to_string()) {
                     println!("Failed to send slack message: {}", e);
                 }
